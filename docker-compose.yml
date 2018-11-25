@@ -15,7 +15,7 @@ services:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca1.vm.com
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.mfr.vm.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/7999e52d9b5fe5917981f416b199bf911341d401878c0d7ef51aab0e6b0ba259_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/0cb53e37ac26c7d21efd1329094e9f46df1fefbcff12a985756ab0a163e43e7b_sk
     ports:
       - "7054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
@@ -31,7 +31,7 @@ services:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca2.vm.com
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.dlr.vm.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/6b4cd552b9a1441c684282b9906a9d9834c8ae9ccce00fdfa254ac5f01177da4_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/32e5b6e4e3a52d35499d3fa010b89babdb4c4d020f1af66847390f5e304716d8_sk
     ports:
       - "8054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
@@ -47,7 +47,7 @@ services:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca3.vm.com
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.rto.vm.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/3b3f3411e7fa33657aa31630a85b2b85d117f3c2f3f337125b8d3ebd44224b91_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/fab896bdb51d246a1141422c1a432f0620b1614a8e44144586360eb09c7ca490_sk
     ports:
       - "9054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
@@ -63,7 +63,7 @@ services:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca4.vm.com
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.scr.vm.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/a573982ed016249231f0003009e8e31f32be759b3bc720dc7e6aca306367c112_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/7946e5be79ce777224060e2da63bf6a99154718663988ba21f42f5c722640f00_sk
     ports:
       - "10054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
@@ -90,7 +90,7 @@ services:
     volumes:
         - ./config/:/etc/hyperledger/configtx
         - ./crypto-config/ordererOrganizations/vm.com/orderers/orderer.vm.com/:/etc/hyperledger/msp/orderer
-        - ./crypto-config/peerOrganizations/mfr.vm.com/peers/peer0.mfr.vm.com/:/etc/hyperledger/msp/peerOrg1
+        - ./crypto-config/peerOrganizations/mfr.vm.com/peers/peer0.mfr.vm.com/:/etc/hyperledger/msp/peerMfr
     networks:
       - basic
 
@@ -322,6 +322,7 @@ services:
         - /var/run/:/host/var/run/
         - ./../chaincode/:/opt/gopath/src/github.com/
         - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
+        - ./config:/etc/hyperledger/configtx
     networks:
         - basic
     #depends_on:
