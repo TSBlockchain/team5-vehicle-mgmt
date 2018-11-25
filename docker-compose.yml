@@ -156,7 +156,7 @@ services:
       - CORE_PEER_ID=peer0.mfr.vm.com
       - CORE_LOGGING_PEER=debug
       - CORE_CHAINCODE_LOGGING_LEVEL=DEBUG
-      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_LOCALMSPID=MfrMSP
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/
       - CORE_PEER_ADDRESS=peer0.mfr.vm.com:7051
       # # the following setting starts chaincode containers on the same
@@ -195,7 +195,7 @@ services:
       - CORE_PEER_ID=peer0.dlr.vm.com
       - CORE_LOGGING_PEER=debug
       - CORE_CHAINCODE_LOGGING_LEVEL=DEBUG
-      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_LOCALMSPID=DlrMSP
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/
       - CORE_PEER_ADDRESS=peer0.dlr.vm.com:7051
       # # the following setting starts chaincode containers on the same
@@ -233,7 +233,7 @@ services:
       - CORE_PEER_ID=peer0.rto.vm.com
       - CORE_LOGGING_PEER=debug
       - CORE_CHAINCODE_LOGGING_LEVEL=DEBUG
-      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_LOCALMSPID=RtoMSP
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/
       - CORE_PEER_ADDRESS=peer0.rto.vm.com:7051
       # # the following setting starts chaincode containers on the same
@@ -271,7 +271,7 @@ services:
       - CORE_PEER_ID=peer0.scr.vm.com
       - CORE_LOGGING_PEER=debug
       - CORE_CHAINCODE_LOGGING_LEVEL=DEBUG
-      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_LOCALMSPID=ScrMSP
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/
       - CORE_PEER_ADDRESS=peer0.scr.vm.com:7051
       # # the following setting starts chaincode containers on the same
