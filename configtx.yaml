@@ -25,7 +25,7 @@ Profiles:
                     - *Mfr
                     - *Dlr
                     - *Rto
-                    - *Scr 
+                    - *Scr
     OneOrgChannel:
         Consortium: VehicleConsortium
         Application:
@@ -76,55 +76,26 @@ Organizations:
             - Host: peer0.mfr.vm.com
               Port: 7051
     - &Dlr
-        # DefaultOrg defines the organization which is used in the sampleconfig
-        # of the fabric.git development environment
         Name: DlrMSP
-
-        # ID to load the MSP definition as
         ID: DlrMSP
-
         MSPDir: crypto-config/peerOrganizations/dlr.vm.com/msp
-
         AnchorPeers:
-            # AnchorPeers defines the location of peers which can be used
-            # for cross org gossip communication.  Note, this value is only
-            # encoded in the genesis block in the Application section context
             - Host: peer0.dlr.vm.com
               Port: 7051
     - &Rto
-        # DefaultOrg defines the organization which is used in the sampleconfig
-        # of the fabric.git development environment
         Name: RtoMSP
-
-        # ID to load the MSP definition as
         ID: RtoMSP
-
         MSPDir: crypto-config/peerOrganizations/rto.vm.com/msp
-
         AnchorPeers:
-            # AnchorPeers defines the location of peers which can be used
-            # for cross org gossip communication.  Note, this value is only
-            # encoded in the genesis block in the Application section context
             - Host: peer0.rto.vm.com
               Port: 7051
     - &Scr
-        # DefaultOrg defines the organization which is used in the sampleconfig
-        # of the fabric.git development environment
         Name: ScrMSP
-
-        # ID to load the MSP definition as
         ID: ScrMSP
-
         MSPDir: crypto-config/peerOrganizations/scr.vm.com/msp
-
         AnchorPeers:
-            # AnchorPeers defines the location of peers which can be used
-            # for cross org gossip communication.  Note, this value is only
-            # encoded in the genesis block in the Application section context
             - Host: peer0.scr.vm.com
               Port: 7051
-
-
 
 
 ################################################################################

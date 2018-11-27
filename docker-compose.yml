@@ -15,7 +15,7 @@ services:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca1.vm.com
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.mfr.vm.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/0cb53e37ac26c7d21efd1329094e9f46df1fefbcff12a985756ab0a163e43e7b_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/b6d73a6c00b1217eda0c604ba839aca4b13c26e464ce1ecc780555eecd887fe7_sk
     ports:
       - "7054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
@@ -31,7 +31,7 @@ services:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca2.vm.com
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.dlr.vm.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/32e5b6e4e3a52d35499d3fa010b89babdb4c4d020f1af66847390f5e304716d8_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/570e6b5a91445bccb65279a2ccb2ad326895faba77d34a5faae2c145b7edc1b2_sk
     ports:
       - "8054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
@@ -47,7 +47,7 @@ services:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca3.vm.com
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.rto.vm.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/fab896bdb51d246a1141422c1a432f0620b1614a8e44144586360eb09c7ca490_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/d3f373ff9da320d277a01b16c0ccec8bfe2ded3cedb7a2cde02a517a04617890_sk
     ports:
       - "9054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
@@ -63,7 +63,7 @@ services:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca4.vm.com
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.scr.vm.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/7946e5be79ce777224060e2da63bf6a99154718663988ba21f42f5c722640f00_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/0a805805e6f7eea184e8b9737da6286600df9916a3c2375529aeb7890a152b5e_sk
     ports:
       - "10054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
@@ -94,19 +94,6 @@ services:
     networks:
       - basic
 
-  couchdb4:
-    container_name: couchdb4
-    image: hyperledger/fabric-couchdb
-    # Populate the COUCHDB_USER and COUCHDB_PASSWORD to set an admin user and password
-    # for CouchDB.  This will prevent CouchDB from operating in an "Admin Party" mode.
-    environment:
-      - COUCHDB_USER=
-      - COUCHDB_PASSWORD=
-    ports:
-      - 8984:5984
-    networks:
-      - basic
-
   couchdb1:
     container_name: couchdb1
     image: hyperledger/fabric-couchdb
@@ -120,12 +107,9 @@ services:
     networks:
       - basic
 
-
   couchdb2:
     container_name: couchdb2
     image: hyperledger/fabric-couchdb
-    # Populate the COUCHDB_USER and COUCHDB_PASSWORD to set an admin user and password
-    # for CouchDB.  This will prevent CouchDB from operating in an "Admin Party" mode.
     environment:
       - COUCHDB_USER=
       - COUCHDB_PASSWORD=
@@ -134,17 +118,25 @@ services:
     networks:
       - basic
 
-
   couchdb3:
     container_name: couchdb3
     image: hyperledger/fabric-couchdb
-    # Populate the COUCHDB_USER and COUCHDB_PASSWORD to set an admin user and password
-    # for CouchDB.  This will prevent CouchDB from operating in an "Admin Party" mode.
     environment:
       - COUCHDB_USER=
       - COUCHDB_PASSWORD=
     ports:
       - 7984:5984
+    networks:
+      - basic
+
+  couchdb4:
+    container_name: couchdb4
+    image: hyperledger/fabric-couchdb
+    environment:
+      - COUCHDB_USER=
+      - COUCHDB_PASSWORD=
+    ports:
+      - 8984:5984
     networks:
       - basic
 
@@ -300,9 +292,7 @@ services:
       - orderer.vm.com
     networks:
       - basic
- 
-
-  
+   
   cli:
     container_name: cli
     image: hyperledger/fabric-tools
@@ -312,9 +302,9 @@ services:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       - CORE_LOGGING_LEVEL=DEBUG
       - CORE_PEER_ID=cli
-      - CORE_PEER_ADDRESS=peer0.org1.vm.com:7051
-      - CORE_PEER_LOCALMSPID=Org1MSP
-      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.vm.com/users/Admin@org1.vm.com/msp
+      - CORE_PEER_ADDRESS=peer0.mfr.vm.com:7051
+      - CORE_PEER_LOCALMSPID=MfrMSP
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/mfr.vm.com/users/Admin@mfr.vm.com/msp
       - CORE_CHAINCODE_KEEPALIVE=10
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: /bin/bash
